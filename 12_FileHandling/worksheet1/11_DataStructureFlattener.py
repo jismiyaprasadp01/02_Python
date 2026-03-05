@@ -8,33 +8,19 @@ nested keys into new single keys.
  • Validation:
  Use a sample nested structure to verify that the output dictionary correctly maps all nested 
 values to single-level keys.'''
-import json
 
-def flatten(data, parent_key='', sep='_'):
-    flat_dict = {}
-    if isinstance(data, dict):
-        for key, value in data.items():
-            full_key = f"{parent_key}{sep}{key}" if parent_key else key
-            flat_dict.update(flatten(value, full_key, sep))
-    elif isinstance(data, list):
-        for i, item in enumerate(data):
-            full_key = f"{parent_key}{sep}{i}"
-            flat_dict.update(flatten(item, full_key, sep))
+data = {
+    "user": {"name": "John", "age": 25},
+    "city": "London"
+}
+
+flat = {}
+
+for key in data:
+    if type(data[key]) == dict:
+        for k in data[key]:
+            flat[key + "_" + k] = data[key][k]
     else:
-        flat_dict[parent_key] = data
-    return flat_dict
+        flat[key] = data[key]
 
-json_filename=input("Enter the json file:")
-with open(json_filename, "r") as f:
-    nested_data = json.load(f)
-
-flat_data = flatten(nested_data)
-for i,j in flat_data.items():
-    print(i,j)
-print(flat_data)
-print("Flattened JSON:")
-print(json.dumps(flat_data, indent=2))
-
-   
-with open("flattened_data.json", "w") as f:
-    json.dump(flat_data, f, indent=2)
+print(flat)

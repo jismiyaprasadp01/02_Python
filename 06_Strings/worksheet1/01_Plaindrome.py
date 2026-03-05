@@ -6,17 +6,8 @@ Expected Output:
 Palindrome: Yes
 Symmetrical: Yes
 """
-s=str(input("Enter the string"))
-length=len(s)
-is_palindrome=True
-for i in range(length//2):
-	if s[i]!=s[length-1-i]:
-		is_palindrome=False
-		break
-if is_palindrome:
-	print("Palindrome")
+s = "madam"
+if s== s[::-1]:
+    print("Palindrome")
 else:
-	print("Not Palindrome")
-
-	
-
+    print("Not Palindrome")

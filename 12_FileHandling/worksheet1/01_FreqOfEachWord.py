@@ -4,18 +4,14 @@
  Description: Read a text file, count the frequency of each word, and output the results as a 
 dictionary.
 '''
-
-
-from collections import defaultdict
-
-with open('word.txt', 'r') as file:
-    inp = file.read()
-
-words = inp.split()
-freq = defaultdict(int)
-
-for word in words:
-    freq[word] += 1
-
-print(dict(freq))
-
+file=open("word.txt","r")
+data=file.read()
+words=data.split()
+count={}
+for i in words:
+        if i in count:
+                count[i]=count[i]+1
+        else:
+                count[i]=1
+print(count)
+file.close()

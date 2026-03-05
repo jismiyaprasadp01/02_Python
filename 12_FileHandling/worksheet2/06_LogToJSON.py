@@ -2,39 +2,28 @@
  Write a script that converts the log file into a JSON file. Each log entry should be a JSON 
 object containing the keys: timestamp, log_level, module, and message.
  Challenge: Ensure that the JSON output correctly represents all valid log entries while 
-ignoring or flagging misformatted lines.'''
-import re
+ignoring or flagging misformatted lines.
+'''
+
 import json
 
-def convert_log_to_json(log_file, json_file):
-    log_entries = []
-    malformed_lines = []
+logs = []
 
-    pattern = re.compile(r'^\[(.*?)\] \[(.*?)\] \[(.*?)\] (.*)$')
+with open("log.txt") as f:
+    for line in f:
+        parts = line.split()
 
-    with open(log_file, 'r') as file:
-        for line_number, line in enumerate(file, start=1):
-            line = line.strip()
-            match = pattern.match(line)
-            if match:
-                entry = {
-                    "timestamp": match.group(1),
-                    "log_level": match.group(2),
-                    "module": match.group(3),
-                    "message": match.group(4)
-                }
-                log_entries.append(entry)
-            else:
-                malformed_lines.append({"line_number": line_number, "content": line})
+        if len(parts) >= 4:
+            log = {
+                "timestamp": parts[0],
+                "log_level": parts[1],
+                "module": parts[2],
+                "message": " ".join(parts[3:])
+            }
 
-    with open(json_file, 'w') as outfile:
-        json.dump(log_entries, outfile, indent=2)
+            logs.append(log)
 
-    print(f" Converted {len(log_entries)} log entries to JSON.")
-    if malformed_lines:
-        print(f" Skipped {len(malformed_lines)} malformed lines:")
-        for error in malformed_lines:
-            print(f"  Line {error['line_number']}: {error['content']}")
+with open("logs.json","w") as f:
+    json.dump(logs,f,indent=4)
 
-filename=input("Enter the filename:")
-convert_log_to_json(filename, "logs.json")
+print("JSON file created")

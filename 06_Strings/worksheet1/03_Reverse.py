@@ -5,8 +5,4 @@ Input: "I love Python"
 Expected Output: "Python love I"
 """
 s = input("Enter the string: ")
-
-words = s.split()
-
-for i in range(len(words) - 1, -1, -1):
-    print(words[i], end=" ")
+print(s[::-1])

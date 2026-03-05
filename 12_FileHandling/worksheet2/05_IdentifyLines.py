@@ -5,26 +5,22 @@ process the rest of the file.
  Challenge: Ensure that your solution uses try-except blocks to catch and handle exceptions 
 without crashing.'''
 
-import re
 
-pattern = r"^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (?P<severity>[A-Z]+): \[(?P<tag>.*?)\] - (?P<message>.*)$"
+with open("log.txt") as f:
+    line_no = 0
 
+    for line in f:
+        line_no += 1
 
-def pattern_extract(s):
-    match=re.match(pattern,s)
-    if match:
-        return {'timestamp': match.group('timestamp'),'severity':[match.group('severity'),match.group('tag')],'message':match.group('message')}
-    else:
-        return "Line doesn't match standard format"
-    
-filename=input("Enter the log file name:")
-try:
-    file=open(filename,'r')
-    content=file.readlines()
-except FileNotFoundError:
-    print("file does not exist!")
-n=1
-for i in content:
-    res=pattern_extract(i)
-    print('log - ',n,' ',res)
-    n+=1
+        try:
+            parts = line.split()
+
+            timestamp = parts[0]
+            level = parts[1]
+            module = parts[2]
+            message = " ".join(parts[3:])
+
+            print("Valid log:", timestamp, level, module, message)
+
+        except:
+            print("Warning: Misformatted line at", line_no)

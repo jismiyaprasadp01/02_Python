@@ -14,5 +14,4 @@ fruits[1]="kiwi"
 for i in fruits:
 	print(i)
 l=len(fruits)
-print(l)
-	
+print(l)	

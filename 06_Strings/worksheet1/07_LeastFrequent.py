@@ -5,17 +5,5 @@ Input: "statistics"
 Expected Output: Least frequent character: 'a'
 """
 s = input("Enter the string: ")
-
-freq = {}
-
-for ch in s:
-    if ch in freq:
-        freq[ch] += 1
-    else:
-        freq[ch] = 1
-
-min_count = min(freq.values())
-
-for ch in freq:
-    if freq[ch] == min_count:
-        print("Least frequent character:", ch)
+min_char = min(s, key=s.count)
+print("Maximum frequency character:", min_char)

@@ -5,47 +5,13 @@ Task 4: Modular Code Development
  severity using 
 dictionaries.
 '''
-import re
+logs = ["ERROR Disk full", "INFO Server started", "ERROR File missing"]
 
-from collections import defaultdict
+def group_logs(logs):
+    d = {}
+    for l in logs:
+        s = l.split()[0]
+        d.setdefault(s, []).append(l)
+    return d
 
-
-pattern=r"^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (?P<severity>[A-Z]+): \[(?P<tag>.*?)\] - (?P<message>.*)$"
-
-
-def pattern_find(s):
-    match=re.match(pattern,s)
-    if match:
-        return {'timestamp': match.group('timestamp'), 'severity': match.group('severity'),'tag':match.group('tag'),'message': match.group('message')}
-    else:
-        return None
-
-
-
-
-filename=input("enter file name:")
-
-try:
-    file=open(filename,"r")
-    info=file.readlines()
-
-except FileNotFoundError:
-    print("log file not found")
-
-dict1=defaultdict(list)
-n=1
-for line in info:
-    res=pattern_find(line)
-    print("log->",n,': ',res)
-    if res:
-        key=res['severity']
-        dict1[key].append(res)
-    n+=1
-
-print('\n\n')
-for key, values in dict1.items():
-    print(f"\n{key}:")
-    for i in values:
-        print(f"{i['timestamp']} [{i['tag']}] - {i['message']}")
-
-
+print(group_logs(logs))

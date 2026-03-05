@@ -5,14 +5,17 @@
 handling missing files gracefully.
 '''
 try:
-    with open('small_log.txt','r') as file:
-        inp=file.readlines()
+    file = open("log.txt", "r")
+    newfile = open("error.txt", "w")
 
-    with open('new_log.txt','w') as file:
-        for i in inp:
-            if 'ERROR' in i:
-                file.write(i)
+    for line in file:
+        if "ERROR" in line:
+            newfile.write(line)
+
+    file.close()
+    newfile.close()
+
+    print("ERROR lines copied to error.txt")
+
 except FileNotFoundError:
-    print("log file not found")
-
-
+    print("Log file not found")

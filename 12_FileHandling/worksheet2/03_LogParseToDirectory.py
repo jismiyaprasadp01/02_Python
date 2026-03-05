@@ -5,31 +5,26 @@ such dictionaries.
  Challenge: Handle lines that deviate from the standard format by either skipping them or 
 recording an error message.'''
 
-import re
 
-pattern = r"^(?P<timestamp>\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2},\d{3}) (?P<severity>[A-Z]+): \[(?P<tag>.*?)\] - (?P<message>.*)$"
+def parse_log(file):
+
+    logs = []
+
+    with open(file) as f:
+        for line in f:
+            parts = line.split()
+
+            if len(parts) >= 3:
+                log = {
+                    "timestamp": parts[0],
+                    "log_level": parts[1],
+                    "message": " ".join(parts[2:])
+                }
+
+                logs.append(log)
+
+    return logs
 
 
-def pattern_extract(s):
-    match=re.match(pattern,s)
-    if match:
-        return {'timestamp': match.group('timestamp'),'severity':match.group('severity'),'tag':match.group('tag'),'message':match.group('message')}
-    else:
-        return "Line doesn't match standard format"
-    
-filename=input("Enter the log file name:")
-try:
-    file=open(filename,'r')
-    content=file.readlines()
-except FileNotFoundError:
-    print("file does not exist!")
-n=1
-l=[]
-for i in content:
-    res=pattern_extract(i)
-    #print('log - ',n,' ',res)
-    l.append(res)
-    n+=1
-
-for i in l:
-    print(i)
+result = parse_log("log.txt")
+print(result)

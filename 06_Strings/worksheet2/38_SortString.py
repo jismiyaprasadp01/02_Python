@@ -1,8 +1,7 @@
 #Reverse Sort a String
-
-def reverse_sort_string(s):
-    return ''.join(sorted(s, reverse=True))
-
 s = "python"
-output = reverse_sort_string(s)
-print(output)
+#result = "".join(sorted(s, reverse=True))
+#print(result)
+##Descending order####
+res=sorted(s)
+print(res)

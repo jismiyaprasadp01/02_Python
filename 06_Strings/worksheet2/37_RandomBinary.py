@@ -1,10 +1,7 @@
 #Generate a Random Binary String
-
 import random
+s = ""
+for i in range(5):
+    s = s + str(random.randint(0,1))
 
-def random_binary_string(length):
-    return ''.join(random.choice('01') for _ in range(length))
-
-length = 8
-output = random_binary_string(length)
-print(output)
+print(s)

@@ -2,21 +2,21 @@
 Generate Random Strings Until a Target String is Formed
 Explanation: Keep generating random strings until you produce the target string.
 Input: Target = "abc"
-Expected Output: Randomly generated 'abc' after N attempts (N will vary)"""
+Expected Output: Randomly generated 'abc' after N attempts (N will vary)
+"""
 import random
 
-target = input("Enter target string: ")
+target = "abc"
 attempts = 0
-letters = "abckkkkkkkkkkkkkkkkkkkkkk"
 
 while True:
-    attempts += 1
-    generated = ""
-
+    s = ""
     for i in range(len(target)):
-        generated += random.choice(letters)
+        s = s + random.choice("abcdefghijklmnopqrstuvwxyz")
 
-    if generated == target:
-        print("Generated:", generated)
+    attempts += 1
+
+    if s == target:
+        print("Found:", s)
         print("Attempts:", attempts)
         break

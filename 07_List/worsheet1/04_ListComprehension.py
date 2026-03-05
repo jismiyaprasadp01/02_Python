@@ -7,6 +7,8 @@ Use list comprehension to create a new list containing fruits with the letter "a
 Convert all fruit names to uppercase using list comprehension.
 Replace "banana" with "orange" using list comprehension
 """
+
+
 fruits = ["apple", "banana", "cherry", "kiwi", "mango"]
 
 with_a = [fruit for fruit in fruits if "a" in fruit]

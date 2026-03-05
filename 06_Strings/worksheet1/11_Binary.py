@@ -4,9 +4,15 @@ Explanation: Test if the string contains only '0' and '1'.
 Input: "101101"
 Expected Output: Is binary string: Yes
 """
-def check_bin(s):
-    if set(s).issubset({'0','1'}):
-        return True
-    return False
-s=input("Enter the binary string: ")
-print("Is binary string:",'Yes'if check_bin(s) else 'No')
+
+s = input("Enter the string: ")
+flag = True
+for i in s:
+    if i != '0' and i != '1':
+        flag = False
+        break
+
+if flag:
+    print("Is binary string: Yes")
+else:
+    print("Is binary string: No")

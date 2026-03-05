@@ -6,24 +6,18 @@ The final output should be a JSON file containing an array of these objects.
  • Validation:
  Provide a sample CSV file and confirm that the output JSON file accurately represents the 
 CSV content structure.'''
+
 import csv
 import json
 
-def csv_to_json(csv_file, json_file):
-    try:
-        with open(csv_file, mode='r', newline='') as file:
-            reader = csv.DictReader(file)
-            data = [row for row in reader]  
+data = []
 
-        with open(json_file, mode='w') as file:
-            json.dump(data, file, indent=2)
+with open("data.csv") as f:
+    reader = csv.DictReader(f)
+    for row in reader:
+        data.append(row)
 
-        print(f"Successfully converted '{csv_file}' to '{json_file}'.")
+with open("data.json","w") as f:
+    json.dump(data,f,indent=4)
 
-    except FileNotFoundError:
-        print(f"Error: '{csv_file}' not found.")
-    except Exception as e:
-        print(f"Unexpected error: {e}")
-
-
-csv_to_json("employees.csv", "employees.json")
+print("CSV converted to JSON")

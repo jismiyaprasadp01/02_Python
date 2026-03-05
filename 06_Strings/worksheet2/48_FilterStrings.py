@@ -1,10 +1,10 @@
 #Filter Strings with a Combination of k Substrings
 
-def filter_by_substrings(strings, substrings):
-    return [s for s in strings if all(sub in s for sub in substrings)]
+words = ["applepie", "applejuice", "bananaapple", "pieapple"]
+subs = ["apple", "pie"]
+result = []
+for w in words:
+    if subs[0] in w and subs[1] in w:
+        result.append(w)
 
-input_list = ["applebanana", "apple", "banana", "applebananacherry"]
-required_substrings = ["apple", "banana"]
-
-output = filter_by_substrings(input_list, required_substrings)
-print(output)
+print(result)
