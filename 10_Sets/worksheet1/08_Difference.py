@@ -1,15 +1,15 @@
-'''Python program to find the difference between two lists
-Use set subtraction: A - B!'''
+"""
+Python program to find the difference between two lists
+Story: What games do you want to play this week that you didn't play last week?
+Sample Input
+last_week = ["hide", "seek", "tag"]
+this_week = ["hide", "seek", "jump", "run"]
+Sample Output:
+1
+["jump", "run"]
+"""
 
-import ast
-list1 =input("Enter the list 1:")
-list2 =input("Enter the list 2:")
-list1=ast.literal_eval(list1)
-list2=ast.literal_eval(list2)
-s1 = set(list1)
-s2 = set(list2)
-
-# Use set subtraction to find items in A but not in B
-difference = s1 - s2
-
-print("Items in A but not in B:", difference)
+a= ["hide", "seek", "tag"]
+b= ["hide", "seek", "jump", "run"]
+diff=set(b)-set(a)
+print(diff)

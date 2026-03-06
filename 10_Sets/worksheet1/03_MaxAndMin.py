@@ -1,13 +1,11 @@
-'''Python - Maximum and Minimum in a Set'''
-
-import ast
-s=input("Enter the set:")
-s=ast.literal_eval(s)
-s=list(s)
-maximum=minimum=s[0]
-for i in s:
-    if i>maximum:
-        maximum=i
-    if i<minimum:
-        minimum=i
-print("max:",maximum,"min:",minimum)
+"""
+Python - Maximum and Minimum in a Set
+Story: You played some games. What’s your best and worst score?
+Sample Input:
+scores = {3, 7, 10, 2, 9}
+Max: 10
+Min: 2
+"""
+s={3,7,10,2,9}
+print(max(s))
+print(min(s))

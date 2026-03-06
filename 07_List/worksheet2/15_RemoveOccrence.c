@@ -8,5 +8,5 @@ n=2
 res=[]
 for i in a:
 	if i!=n:
-		res=i
-		print(res)
+		res.append(i)
+print(res)

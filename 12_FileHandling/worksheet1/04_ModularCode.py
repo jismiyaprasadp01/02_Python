@@ -6,7 +6,6 @@ Task 4: Modular Code Development
 dictionaries.
 '''
 logs = ["ERROR Disk full", "INFO Server started", "ERROR File missing"]
-
 def group_logs(logs):
     d = {}
     for l in logs:

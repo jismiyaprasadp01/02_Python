@@ -1,8 +1,12 @@
-'''Python - Remove items from Set'''
-
-import ast
-s=input("Enter the set:")
-s=ast.literal_eval(s)
-n=input("Enter the value to be deleted:")
-s.remove(n)
-print(s)
+"""
+Python - Remove items from Set
+Story: You want to take out an old toy from your toy box.
+Sample Input:
+toys = {"robot", "car", "doll"}
+# remove "doll"
+Sample Output
+{"robot", "car"}
+"""
+toys = {"robot", "car", "doll"}
+toys.remove("doll")
+print(toys)
