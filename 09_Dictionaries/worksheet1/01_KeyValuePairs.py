@@ -21,8 +21,6 @@ students = {
 
 print(students)
 
-
-
 d = {'x': 1, 'y': 2, 'x': 5}
 print(d)
 
@@ -35,11 +33,11 @@ print('fruit' in d)
 word = "apple"
 freq = {}
 
-for letter in word:
-    if letter in freq:
-        freq[letter] += 1
+for i in word:
+    if i in freq:
+        freq[i] += 1
     else:
-        freq[letter] = 1
+        freq[i] = 1
 
 print(freq)
 

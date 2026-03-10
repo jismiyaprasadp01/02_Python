@@ -6,7 +6,7 @@ Output: String: "Python"
 Tuple: ('P', 'y', 't', 'h', 'o', 'n')
 """
 t = ('P', 'y', 't', 'h', 'o', 'n')
-string_value = "".join(t)
-new_tuple = tuple(string_value)
-print("String:", string_value)
-print("Tuple:", new_tuple)
+a = "".join(t)
+b= tuple(a)
+print("String: a)
+print("Tuple:", b)

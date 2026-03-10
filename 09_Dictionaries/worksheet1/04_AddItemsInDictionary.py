@@ -8,20 +8,20 @@ Merge two dictionaries: d1 = {'x': 1} and d2 = {'y': 2}.
 Expected Output: {'x': 1, 'y': 2}'''
 
 cities = {'Delhi': 18000000, 'Mumbai': 20000000}
-cities.update({'Bangalore':120000})
-print("after updation cities:",cities)
-
+cities['Bangalore'] = 12000000
+print(cities)
 user = {'name': 'Riya'}
-if 'status' not in user.keys():
-    user.update({'status':'active'})
-    print(user)
-else:
-    print('status already present')
-l=['dog', 'cat', 'rabbit']
-d={}
-for i in l:
-    d[i]=len(i)
-print("string as keys and length as values",d)
-d1={'x':1}
-d2={'y':2}
-print(d1|d2)
+if 'status' not in user:
+    user['status'] = 'active'
+print(user)
+words = ['dog', 'cat', 'rabbit']
+d = {}
+
+for i in words:
+    d[i] = len(i)
+print(d)
+
+d1 = {'x': 1}
+d2 = {'y': 2}
+d1.update(d2)
+print(d1)

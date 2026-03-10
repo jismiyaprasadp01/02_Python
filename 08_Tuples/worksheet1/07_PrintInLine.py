@@ -7,5 +7,5 @@ banana
 cherry
 """
 t = ("apple", "banana", "cherry")
-for item in t:
-    print(item)
+for i in t:
+    print(i)

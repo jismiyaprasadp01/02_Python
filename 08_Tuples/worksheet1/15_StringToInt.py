@@ -5,8 +5,5 @@ Input: t = (("11", "22"), ("33", "44"))
 Output: ((11, 22), (33, 44))
 """
 t = (("11", "22"), ("33", "44"))
-converted = tuple(
-    tuple(int(num) for num in inner)
-    for inner in t
-)
+converted = tuple(tuple(int(j) for j in i)for i in t)
 print(converted)
